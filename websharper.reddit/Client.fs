@@ -4,7 +4,6 @@ open IntelliFactory.WebSharper
 open IntelliFactory.WebSharper.JQuery
 open IntelliFactory.WebSharper.PhoneJS
 open IntelliFactory.WebSharper.Knockout
-open IntelliFactory.WebSharper.PhoneGap
 
 [<JavaScript>]
 module Client =
