@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NY Times RSS feed</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <script type="text/javascript" src="Content/websharper.reddit.head.js"></script>
+<!--    <script type="text/javascript" src="cordova.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="Content/websharper.reddit.css" />
+    
+
+    <!-- Layouts -->
+    <link rel="stylesheet" type="text/css" href="layouts/Simple/SimpleLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Simple/SimpleLayout.html" />
+
+    <link rel="dx-template" type="text/html" href="views/List.html"/>
+    <link rel="stylesheet" type="text/css" href="views/List.css"/>
+    <link rel="dx-template" type="text/html" href="views/Page.html"/>
+    <link rel="stylesheet" type="text/css" href="views/Page.css"/>
+
+    <style type="text/css">
+        body {
+            background-color: #999;
+        }
+
+        #wrapper {
+            width: 418px;
+            height: 772px;
+            padding: 141px 0 0 63px;
+            background-image: url("iphone5.png");
+            margin: 0 auto;
+        }
+        
+        .dx-viewport {
+            width: 360px;
+            height: 639px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wrapper">
+        <div class="dx-viewport"></div>
+    </div>
+    <script type="text/javascript" src="Content/websharper.reddit.js"></script>
+    <script type="text/javascript" src="layouts/Simple/SimpleLayout.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<div data-options="dxView : { name: 'List', title: '/r/all' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+            <div class="list-indentation" data-bind="dxList: {dataSource: dataSource, pullRefreshEnabled: true }">
+                <div data-options="dxTemplate : { name: 'item' } " >
+                      <div data-bind="click: Open">
+                          <div class="thumbnail-image" data-bind="if: Thumbnail">
+                              <img data-bind="attr: { src: Thumbnail, alt: Title }" />
+                          </div>
+                          <div>
+                              <h2 class="title-text" data-bind="text: Title"></h2>
+                              <div class="nsfw-text" data-bind="if: Nsfw">NSFW</div>
+                              <div class="subreddit-text" data-bind="text: Subreddit"></div>
+                              <div class="date-text" data-bind="text: CreatedUTC.toLocaleString()"></div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+    </div>
+</div>
