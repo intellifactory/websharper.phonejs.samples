@@ -110,8 +110,8 @@
       <HintPath>..\packages\WebSharper.Knockout.2.5.11.0\lib\net40\IntelliFactory.WebSharper.Knockout.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="IntelliFactory.WebSharper.PhoneGap">
-      <HintPath>..\packages\WebSharper.PhoneGap.2.5.16\lib\net40\IntelliFactory.WebSharper.PhoneGap.dll</HintPath>
+    <Reference Include="IntelliFactory.WebSharper.PhoneJS">
+      <HintPath>..\packages\WebSharper.PhoneJS.2.5.17.0\lib\net40\IntelliFactory.WebSharper.PhoneJS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IntelliFactory.WebSharper.TypeScript.Lib">
