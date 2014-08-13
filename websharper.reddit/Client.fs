@@ -5,6 +5,11 @@ open IntelliFactory.WebSharper.JQuery
 open IntelliFactory.WebSharper.PhoneJS
 open IntelliFactory.WebSharper.Knockout
 
+[<Require(typeof<Resources.AndroidHoloDark>)>]
+[<Require(typeof<Resources.GenericStyle>)>]
+[<Require(typeof<Resources.IOSDefault>)>]
+[<Require(typeof<Resources.Win8White>)>]
+[<Require(typeof<Resources.TizenWhite>)>]
 [<JavaScript>]
 module Client =
     type RedditPost = 

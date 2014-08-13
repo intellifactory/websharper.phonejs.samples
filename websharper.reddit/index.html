@@ -32,6 +32,9 @@
             height: 772px;
             padding: 141px 0 0 63px;
             background-image: url("iphone5.png");
+        }
+
+        .align-center {
             margin: 0 auto;
         }
         
@@ -40,12 +43,35 @@
             height: 639px;
             overflow: hidden;
         }
+
+        .source-button {
+            text-decoration: none;
+            background-color: #EEEEEE;
+            color: #333333;
+            padding: 2px 6px 2px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+
+        .floating-info {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
     </style>
 
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" class="align-center">
         <div class="dx-viewport"></div>
+    </div>
+    <div class="floating-info">
+        <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fintellifactory.github.io%2Fsamples.websharper.phonejs%2Fmobile.html&amp;qzone=0&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="qr code" />
+        <a class="source-button" href="https://github.com/intellifactory/samples.websharper.phonejs/blob/master/websharper.reddit/Client.fs" target="_blank">Source</a>
     </div>
     <script type="text/javascript" src="Content/websharper.reddit.js"></script>
     <script type="text/javascript" src="layouts/Simple/SimpleLayout.js"></script>
