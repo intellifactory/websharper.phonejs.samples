@@ -24,7 +24,11 @@
 
     <style type="text/css">
         body {
-            background-color: #999;
+            background-color: #f3f3f3;
+            display: flexbox;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #wrapper {
@@ -32,10 +36,6 @@
             height: 772px;
             padding: 141px 0 0 63px;
             background-image: url("iphone5.png");
-        }
-
-        .align-center {
-            margin: 0 auto;
         }
         
         .dx-viewport {
@@ -45,31 +45,46 @@
         }
 
         .source-button {
+            display: block;
+            width: 131px;
+            height: 40px;
+            margin: 16px auto 0;
+            background-color: #4ecdc4;
+            line-height: 40px;
             text-decoration: none;
-            background-color: #EEEEEE;
-            color: #333333;
-            padding: 2px 6px 2px 6px;
-            border-top: 1px solid #CCCCCC;
-            border-right: 1px solid #333333;
-            border-bottom: 1px solid #333333;
-            border-left: 1px solid #CCCCCC;
+            font-family: sans-serif;
+            border-radius: 4px;
+            color: rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            box-shadow: 1px 1px 0px #556270;
         }
 
-        .floating-info {
-            width: 400px;
-            height: 400px;
-            position: absolute;
-            top: 200px;
-            left: 200px;
+        #layer {
+            width: 250px;
+            height: 250px;
+            text-align: center;
         }
+
+        #layer > span {
+            font-family: sans-serif;
+            font-size: large;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        #layer > img {
+            border: solid 6px white;
+        }
+
     </style>
 
 </head>
 <body>
-    <div id="wrapper" class="align-center">
+    <div id="wrapper">
         <div class="dx-viewport"></div>
     </div>
-    <div class="floating-info">
+    <div id="layer">
+        <span>Try it on your mobile device!</span>
         <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fintellifactory.github.io%2Fsamples.websharper.phonejs%2Fmobile.html&amp;qzone=0&amp;margin=0&amp;size=200x200&amp;ecc=L" alt="qr code" />
         <a class="source-button" href="https://github.com/intellifactory/samples.websharper.phonejs/blob/master/websharper.reddit/Client.fs" target="_blank">Source</a>
     </div>
