@@ -1,4 +1,4 @@
-﻿namespace websharper.nytimes
+﻿namespace WebSharper.Reddit
 
 open IntelliFactory.WebSharper
 

@@ -1,6 +1,7 @@
-namespace websharper.nytimes
+namespace WebSharper.Reddit
 
 open IntelliFactory.WebSharper
+open IntelliFactory.WebSharper.JavaScript
 open IntelliFactory.WebSharper.JQuery
 open IntelliFactory.WebSharper.PhoneJS
 open IntelliFactory.WebSharper.Knockout
@@ -17,7 +18,7 @@ module Client =
             Author     : string
             Title      : string
             Name       : string
-            CreatedUTC : EcmaScript.Date
+            CreatedUTC : Date
             Score      : int
             Thumbnail  : string
             Url        : string
@@ -37,14 +38,13 @@ module Client =
                                          |> Option.fold (fun s a -> s + "?after=" + a) "http://www.reddit.com/r/all/hot.json"
                                      JQuery.GetJSON(url)
                                         .Then(fun data ->
-                                            JavaScript.Log data
                                             try
                                                 let posts : obj [] = data?data?children
                                                 let result =
                                                     [| 
                                                         for post in posts do
                                                             let data = post?data
-                                                            let date = new EcmaScript.Date(0)
+                                                            let date = new Date(0)
                                                             date.SetUTCSeconds(data?created_utc)
 
                                                             yield {
@@ -84,7 +84,8 @@ module Client =
                     MainApp?List <- fun () ->
                         let viewModel = 
                             New [
-                                "dataSource" => (DataSource <| Func<_,_>(fun this -> app.navigate("Page/" + EcmaScript.Global.EncodeURIComponent(this.Url))))
+                                "dataSource" => (DataSource <| Func<_,_>(fun this -> 
+                                                    app.navigate("Page/" + JS.EncodeURIComponent(this.Url))))
                             ]
                         viewModel
 
@@ -92,7 +93,7 @@ module Client =
                         let viewModel =
                             New [
                                 "Title" => paramz?title
-                                "Url" => EcmaScript.Global.DecodeURIComponent paramz?url
+                                "Url" => JS.DecodeURIComponent paramz?url
                             ]
                         viewModel
 
