@@ -1,10 +1,10 @@
 namespace WebSharper.Reddit
 
-open IntelliFactory.WebSharper
-open IntelliFactory.WebSharper.JavaScript
-open IntelliFactory.WebSharper.JQuery
-open IntelliFactory.WebSharper.PhoneJS
-open IntelliFactory.WebSharper.Knockout
+open WebSharper
+open WebSharper.JavaScript
+open WebSharper.JQuery
+open WebSharper.PhoneJS
+open WebSharper.Knockout
 
 [<Require(typeof<Resources.AndroidHoloDark>)>]
 [<Require(typeof<Resources.GenericStyle>)>]
@@ -22,7 +22,7 @@ module Client =
             Score      : int
             Thumbnail  : string
             Url        : string
-            Open       : Func<RedditPost, unit>
+            Open       : FuncWithThis<RedditPost, unit>
             Nsfw       : bool
             Subreddit  : string
         }
@@ -38,6 +38,7 @@ module Client =
                                          |> Option.fold (fun s a -> s + "?after=" + a) "http://www.reddit.com/r/all/hot.json"
                                      JQuery.GetJSON(url)
                                         .Then(fun data ->
+                                            Console.Log data
                                             try
                                                 let posts : obj [] = data?data?children
                                                 let result =
@@ -63,7 +64,7 @@ module Client =
                                                 lastFetched <- Some result.Last.Name
                                                 As result
                                             with
-                                            | _ -> false)
+                                            | _ -> ())
                             ])
 
     let DataSource navigate =
@@ -73,30 +74,30 @@ module Client =
 
     let Main =
         JQuery.Of(fun () -> 
-                    let MainApp : obj = New []
-                    MainApp?app <- DevExpress.framework.html.HtmlApplication.Create(
-                                        As New [
-                                            "namespace" => MainApp
-                                            "navigationType" => "simple"
-                                        ])
-                    let app = As<DevExpress.framework.html.HtmlApplication.T> MainApp?app
+            let MainApp : obj = New []
+            MainApp?app <- DevExpress.framework.html.HtmlApplication.Create(
+                                As New [
+                                    "namespace" => MainApp
+                                    "navigationType" => "simple"
+                                ])
+            let app = As<DevExpress.framework.html.HtmlApplication.T> MainApp?app
 
-                    MainApp?List <- fun () ->
-                        let viewModel = 
-                            New [
-                                "dataSource" => (DataSource <| Func<_,_>(fun this -> 
-                                                    app.navigate("Page/" + JS.EncodeURIComponent(this.Url))))
-                            ]
-                        viewModel
+            MainApp?List <- fun () ->
+                let viewModel = 
+                    New [
+                        "dataSource" => (DataSource <| FuncWithThis(fun this -> 
+                                            app.navigate("Page/" + JS.EncodeURIComponent(this.Url))))
+                    ]
+                viewModel
 
-                    MainApp?Page <- fun paramz ->
-                        let viewModel =
-                            New [
-                                "Title" => paramz?title
-                                "Url" => JS.DecodeURIComponent paramz?url
-                            ]
-                        viewModel
+            MainApp?Page <- fun paramz ->
+                let viewModel =
+                    New [
+                        "Title" => paramz?title
+                        "Url" => JS.DecodeURIComponent paramz?url
+                    ]
+                viewModel
 
-                    app.router.register(":view", New ["view" => "List"])
-                    app.router.register(":view/:url", New ["view" => "Page"; "url" => ""])
-                    app.navigate()).Ignore
+            app.router.register(":view", New ["view" => "List"])
+            app.router.register(":view/:url", New ["view" => "Page"; "url" => ""])
+            app.navigate()).Ignore

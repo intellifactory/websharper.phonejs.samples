@@ -1,6 +1,6 @@
 ﻿namespace WebSharper.Reddit
 
-open IntelliFactory.WebSharper
+open WebSharper
 
 [<JavaScript; AutoOpen>]
 module Utils =
