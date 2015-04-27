@@ -4,5 +4,5 @@
 [Samples][samp] for [WebSharper][ws] bindings to PhoneJS.
 
 
-[samp]: http://intellifactory.github.io/samples.websharper.phonejs
+[samp]: http://intellifactory.github.io/websharper.phonejs.samples
 [ws]: http://websharper.com/
